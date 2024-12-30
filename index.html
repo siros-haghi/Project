@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <meta name="description" content="This is the description" />
+  <meta name="viewport" content="width=1300" />
+</head>
+<style>
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    width: 100%;
+    height: 90%;
+    background: linear-gradient(220deg, rgba(34, 37, 47, 0.575) 50% 50%, rgba(34, 37, 47, 0.375) 50.1% 10%);
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif !important;
+  }
+
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    filter: blur(2px);
+
+  }
+
+  .panel {
+    width: 1300px;
+    padding: 1% 1%;
+    position: relative;
+    transform: translateY(10%);
+
+  }
+
+  .body {
+    display: flex;
+    margin: 0 auto;
+    height: 83ch;
+    padding: 2%;
+    width: 95%;
+    background-color: rgb(34, 37, 47);
+    border-radius: 40px;
+  }
+
+  .menu {
+    display: flex;
+    width: 20%;
+    height: 75ch;
+  }
+
+  .box-menu {
+    display: flex;
+    justify-content: flex-end;
+    width: 75%;
+    height: 75ch;
+    display: flex;
+    margin: 0 auto;
+    background-color: rgb(22, 26, 34);
+    border-radius: 40px;
+    background-image: linear-gradient(to top, #313641, rgb(34, 37, 47));
+  }
+
+  .title {
+    font-size: 60px;
+    color: #b3acac;
+    font-family: barlow;
+    margin-left: 50px;
+  }
+
+  .line {
+    width: 95%;
+    height: 5px;
+    background-color: #0e3ce1;
+  }
+
+  .form {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+    margin-top: 10%;
+    margin-left: 50px;
+  }
+
+  #DHCP,
+  #Static {
+    width: 20px;
+    height: 20px;
+  }
+
+  input {
+    float: right;
+  }
+
+  .sizeinput {
+    width: 60px;
+    height: 30px;
+    margin-left: 15px;
+    border: none;
+    background-color: #ddd;
+    outline: none;
+    border-radius: 5px;
+    padding-left: 10px;
+  }
+
+  label {
+    float: left;
+    font-size: 25px;
+    font-weight: bold;
+    color: #b3acac;
+  }
+
+  input {
+    font-size: 24px;
+  }
+
+  .tab {
+    background-color: #313641;
+    width: 100%;
+    padding: 20px;
+    border-radius: 40px;
+  }
+
+  .tab button {
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+    background-color: inherit;
+    color: rgb(113, 106, 106);
+    padding: 7px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 20px;
+    border-radius: 11px;
+    margin-top: 23px;
+    border: 3px solid #1a161600;
+    padding-left: 30px;
+  }
+
+  .tab button:hover {
+    background-color: hsla(306, 78%, 35%, 0);
+    font-size: 20px;
+    padding: 7px 16px;
+    padding-left: 30px;
+
+  }
+
+  .tab button.active {
+    background-color: #0e3ce1;
+    color: rgb(255, 254, 254);
+    font-size: 20px;
+    border: 3px solid #1a161624;
+    padding: 7px 16px;
+    transition-duration: 1s;
+    padding-left: 30px;
+  }
+
+  .tabcontent {
+    padding: 0px 12px;
+    width: 100%;
+    border-left: none;
+    height: 300px;
+  }
+
+  .fieldset {
+    border-radius: 10px;
+    padding: 40px 50px;
+    border: solid 1px #8c7e7e;
+  }
+
+  .fieldset-content {
+    border: none;
+  }
+
+  .off {
+    opacity: 0.2;
+  }
+
+  legend {
+    margin: 0 -15px;
+  }
+
+  #Connection legend {
+    padding: 0 15px;
+  }
+
+  #Connection legend>div {
+    display: flex;
+    align-items: center;
+  }
+
+  .radio-box {
+    display: flex;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 15px;
+  }
+
+  .radio-box-Connection {
+    display: flex;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0 50px;
+  }
+
+  .radio-box.dhcp {
+    padding: 0 35px;
+  }
+
+  .formConnection {
+    width: 72%;
+  }
+
+  .Connectioninput {
+    width: 100%;
+    padding-left: 20px;
+    border: none;
+    background-color: #ddd;
+    outline: none;
+    border-radius: 5px;
+  }
+
+  input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    float: left;
+  }
+
+  .Userinput {
+    width: 60%;
+    padding: 5px;
+    border: none;
+    background-color: #ddd;
+    outline: none;
+    border-radius: 5px;
+  }
+
+  .userbutton {
+    width: 20%;
+    height: 40px;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    transition-duration: 0.5s;
+    background-color: #0e3ce1;
+    color: rgb(255, 254, 254);
+    float: right;
+
+  }
+
+
+  .userbutton {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+  }
+
+  .userbutton:before {
+    content: '';
+    position: absolute;
+    border: #0e3ce1 solid 2px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: top, right, bottom, left;
+    transition-property: top, right, bottom, left;
+  }
+
+  .userbutton:hover:before,
+  .userbutton:focus:before,
+  .userbutton:active:before {
+    top: -6px;
+    right: -6px;
+    bottom: -6px;
+    left: -6px;
+  }
+
+  .Maintenance {
+    display: flex;
+    justify-content: space-between;
+    font-family: arial;
+    align-items: baseline;
+    align-items: end;
+    padding: 0 50px;
+  }
+
+  .Maintenance-btn {
+    font-size: 17px;
+    padding: 10px 30px;
+    border-radius: 11px;
+    outline: none;
+    border: none;
+    transition-duration: 0.5s;
+    background-color: #0e3ce1;
+    color: rgb(255, 254, 254);
+    transition: background .2s ease-in-out;
+  }
+
+  .Maintenance-btn:hover {
+    background: #103c87;
+  }
+
+  .Maintenance-fieldset {
+    display: flex;
+  }
+
+  .Maintenance-radio {
+    display: flex;
+    flex-direction: column;
+    align-content: start;
+    justify-content: flex-start;
+  }
+
+  #factory {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+  }
+
+  #Maintenance legend>label {
+    margin: 0 10px;
+    font-size: 25px;
+  }
+
+  .tablinks {
+    position: relative;
+    padding: 40px;
+  }
+
+  .serverinput {
+    width: 57%;
+  }
+
+  .custom-file-input {
+    content: 'Select some files';
+    color: #b3acac;
+    display: inline-block;
+    border-radius: 3px;
+    padding: 0px 8px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 17px;
+  }
+
+  input[type=file]::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: #084cdf;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+    border-radius: 10px;
+  }
+
+  input[type=file]::file-selector-button:hover {
+    background: #103c87;
+  }
+
+  select {
+    outline: 0;
+    box-shadow: none;
+    border: 5px;
+    background: rgb(86, 89, 100);
+    background-image: none;
+    flex: 1;
+    padding: 0 .5em;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: 'Open Sans', sans-serif;
+    outline: none;
+  }
+
+  .select {
+    float: right;
+    border: none !important;
+    position: relative;
+    display: flex;
+    width: 18em;
+    height: 40px;
+    line-height: 3;
+    background: rgb(86, 89, 100);
+    overflow: hidden;
+    outline: none;
+  }
+
+  .box-status {
+    margin-top: 2%;
+    width: 100%;
+    height: 180%;
+    overflow-y: scroll;
+    padding: 30px 70px;
+  }
+
+  .fieldset-status {
+    margin-top: 0%;
+    border: none;
+    position: relative;
+    margin-left: 5%;
+    padding-bottom: 15%;
+  }
+
+  .fieldset-status::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0px;
+    width: 1px;
+    height: 75.1%;
+    top: 120px;
+    z-index: 10;
+    border-left: dashed 1px #83837d;
+  }
+
+  ul {
+    color: #b3acac;
+    padding-left: 50px;
+    font-size: 27px;
+    position: relative;
+    margin-top: 100px;
+    font-weight: 700;
+  }
+
+  ul::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 66px;
+    width: 1px;
+    height: 81%;
+    top: 40px;
+    z-index: 10;
+    border-left: dashed 1px #83837d;
+  }
+
+  ul:nth-child(2)::after {
+    height: 75.6%;
+  }
+
+  ul:nth-child(3)::after {
+    height: 81.1%;
+  }
+
+  ul:nth-child(4)::after {
+    height: 65.9%;
+  }
+
+  ul::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0px;
+    width: 43px;
+    height: 1px;
+    top: 16px;
+    border-top: dashed 1px #83837d;
+  }
+
+  li {
+    margin-left: 50px;
+    position: relative;
+    list-style: none;
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+    width: 80%;
+  }
+
+  p {
+    color: #b3acaca2;
+    font-size: 21px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+  }
+
+  p::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -32px;
+    width: 35px;
+    height: 1px;
+    top: 20px;
+    border-top: dashed 1px #83837d;
+  }
+
+  li>label {
+    background: #3b4151;
+    padding: 5px 0px;
+    border-radius: 5px;
+    font-size: 25px;
+    color: #b3acaca2;
+    width: 50%;
+    text-align: center;
+  }
+
+  .box-Firmware {
+    width: 180px;
+    background: #313641;
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0 10px;
+  }
+
+  .Maintenance-fieldset {
+    display: flex;
+    align-items: center;
+  }
+
+  .Maintenance-radio div {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: 15px;
+  }
+
+  .factory {
+    margin-right: 15px;
+  }
+
+  .description {
+    display: flex;
+    margin: 0 auto;
+    padding: 2%;
+    width: 88%;
+    border-radius: 40px;
+    color: #83837d;
+    margin-top: -4.8%;
+    justify-content: space-between;
+    font-size: 18px;
+  }
+
+  .powered {
+    margin-right: 30%;
+
+  }
+
+  .notification {
+    float: right;
+    padding: 10px 0;
+    display: none;
+  }
+
+  .ssid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .conection-password {
+    width: 57.5%;
+  }
+
+  .notificationUser1 {
+    display: none;
+    float: right;
+    padding: 0 5px;
+  }
+
+  .notificationUser2 {
+    display: none;
+    float: right;
+    padding: 0 5px;
+  }
+
+  .description>.ver>.ver {
+    font-size: 18px;
+    font-weight: normal;
+    color: #83837d;
+  }
+
+  .description {
+    display: flex;
+    margin: 0 auto;
+    padding: 2%;
+    width: 88%;
+    border-radius: 40px;
+    color: #83837d;
+    margin-top: -4.8%;
+    justify-content: space-between;
+    font-size: 18px;
+  }
+
+  .powered {
+    margin-right: 30%;
+  }
+</style>
+
+<body>
+
+  <section class="panel">
+    <section class="body">
+      <div class="menu">
+        <div class="tab">
+          <button class="tablinks" onclick="openCity(event, 'Status')" id="stat">Status</button>
+          <button class="tablinks" onclick="openCity(event, 'Network')" id="defaultOpen">Network</button>
+          <button class="tablinks" onclick="openCity(event, 'Connection')">Connection</button>
+          <button class="tablinks" onclick="openCity(event, 'Server')">Server</button>
+          <button class="tablinks" onclick="openCity(event, 'User')">User</button>
+          <button class="tablinks" onclick="openCity(event, 'Maintenance')">Maintenance</button>
+        </div>
+      </div>
+
+
+
+
+
+
+      
+
+      <!-- ////دو زبانه کردن سایت -->
+      <script>
+        let lang = {
+          en: {
+            statu: "status"
+          },
+          fa: {
+            statu: "وضعیت"
+          }
+        }
+        let chenge = document.getElementById('stat')
+        let flag = true;
+        chenge.addEventListener('click', function () {
+          if (flag) {
+            console.log('وضعیت');
+            stat.innerHTML = lang.fa.statu
+            flag = false;
+          }else{
+            console.log('status');
+            stat.innerHTML = lang.en.statu
+            flag = true;
+          }
+        })
+      </script>
+
+
+
+
+
+
+
+
+
+
+      <div class="box-menu">
+        <div id="Status" class="tabcontent">
+          <div class="title">Status</div>
+          <div class="line"></div>
+          <div class="box-status">
+            <fieldset class="fieldset-status">
+              <ul>Network
+                <li>
+                  <p>IP Address</p><label id="S_ipaddress">1.168.1.1</label>
+                </li>
+                <li>
+                  <p>Subnet Mask</p><label id="S_subnetmask">192.1168.1.1</label>
+                </li>
+                <li>
+                  <p>Default Getway</p><label id="S_defaultgateway">192.168.1.1</label>
+                </li>
+                <li>
+                  <p>DNS</p><label id="S_dns">192.168.111.111</label>
+                </li>
+              </ul>
+              <ul>Connection
+                <li>
+                  <p>Type</p><label id="S_connectiontype">Ethernet</label>
+                </li>
+                <li>
+                  <p>SSID</p><label id="S_ssid">Apadana</label>
+                </li>
+                <li>
+                  <p>PSK</p><label id="S_psk">123456789</label>
+                </li>
+              </ul>
+              <ul>Server
+                <li>
+                  <p>Server Vendor</p><label id="S_servervendor">888.888.888.888</label>
+                </li>
+                <li>
+                  <p>Address</p><label id="S_serveraddress">0.0.0.0</label>
+                </li>
+                <li>
+                  <p>Username</p><label id="S_serveruser">999.999.999.999</label>
+                </li>
+                <li>
+                  <p>Password</p><label id="S_serverpass">1.1.1.1</label>
+                </li>
+              </ul>
+              <ul>User
+                <li>
+                  <p>Username</p><label id="S_username">192.168.1.1</label>
+                </li>
+                <li>
+                  <p>Password</p><label id="S_password">192.168.1.1</label>
+                </li>
+              </ul>
+            </fieldset>
+          </div>
+        </div>
+        <div id="Network" class="tabcontent">
+          <div class="title">Network</div>
+          <div class="line"></div>
+          <div class="form">
+            <form action="/Network_Setting" id="formNetworkId">
+              <div class="radio-box dhcp" onclick="dhcpcheckstatus();">
+                <input type="radio" id="DHCP" name="IP_Mode" value="DHCP" checked>
+                <label for="DHCP">&nbsp;DHCP</label>
+              </div>
+              <br>
+              <br>
+              <fieldset class="fieldset">
+                <legend>
+                  <div class="radio-box" onclick="staticcheckstatus()">
+                    <input type="radio" id="Static" name="IP_Mode" value="Static">
+                    <label for="Static">&nbsp;STATIC </label>
+                  </div>
+                </legend>
+                <fieldset class="fieldset-content off" id="fieldset-Network" disabled>
+                  <label for="ip">IP Address:</label>
+                  <div>
+                    <input name="IP_Oct_4" id="IP_Oct_4" class="sizeinput" onkeypress="return isNumber(event)"
+                      type="text" tabindex="4" maxlength="3" title="لطفا اعداد بین  0 تا 255 را وارد نمایید"
+                      required="required" required>
+                    <input name="IP_Oct_3" id="IP_Oct_3" class="sizeinput" onkeypress="return isNumber(event)"
+                      type="text" tabindex="3" maxlength="3" title="لطفا اعداد بین  0 تا 255 را وارد نمایید"
+                      required="required" required>
+                    <input name="IP_Oct_2" id="IP_Oct_2" class="sizeinput" onkeypress="return isNumber(event)"
+                      type="text" tabindex="2" maxlength="3" title="لطفا اعداد بین  0 تا 255 را وارد نمایید"
+                      required="required" required>
+                    <input name="IP_Oct_1" id="IP_Oct_1" class="sizeinput" onkeypress="return isNumber(event)"
+                      type="text" tabindex="1" maxlength="3" title="لطفا اعداد بین  0 تا 255 را وارد نمایید"
+                      required="required" required>
+                  </div>
+                  <br>
+                  <br>
+                  <label for="Subnet">Subnet Mask: </label>
+                  <input name="SM_Oct_4" id="SM_Oct_4" class="sizeinput" onkeypress="return isNumber(event)" type="text"
+                    tabindex="8" maxlength="3" title="لطفا اعداد بین  0 تا 255 را وارد نمایید" required="required"
+                    required>
+                  <input name="SM_Oct_3" id="SM_Oct_3" class="sizeinput" onkeypress="return isNumber(event)" type="text"
+                    tabindex="7" maxlength="3" title="لطفا اعداد بین  0 تا 255 را وارد نمایید" required="required"
+                    required>
+                  <input name="SM_Oct_2" id="SM_Oct_2" class="sizeinput" onkeypress="return isNumber(event)" type="text"
+                    tabindex="6" maxlength="3" title="لطفا اعداد بین  0 تا 255 را وارد نمایید" required="required"
+                    required>
+                  <input name="SM_Oct_1" id="SM_Oct_1" class="sizeinput" onkeypress="return isNumber(event)" type="text"
+                    tabindex="5" maxlength="3" title="لطفا اعداد بین  0 تا 255 را وارد نمایید" required="required"
+                    required>
+                  <br>
+                  <br>
+                  <label for="Gateway">defualt Gateway: </label>
+                  <input name="DG_Oct_4" id="DG_Oct_4" class="sizeinput" onkeypress="return isNumber(event)" type="text"
+                    tabindex="12" maxlength="3" title="لطفا اعداد بین  0 تا 255 را وارد نمایید" required="required"
+                    required>
+                  <input name="DG_Oct_3" id="DG_Oct_3" class="sizeinput" onkeypress="return isNumber(event)" type="text"
+                    tabindex="11" maxlength="3" title="لطفا اعداد بین  0 تا 255 را وارد نمایید" required="required"
+                    required>
+                  <input name="DG_Oct_2" id="DG_Oct_2" class="sizeinput" onkeypress="return isNumber(event)" type="text"
+                    tabindex="10" maxlength="3" title="لطفا اعداد بین  0 تا 255 را وارد نمایید" required="required"
+                    required>
+                  <input name="DG_Oct_1" id="DG_Oct_1" class="sizeinput" onkeypress="return isNumber(event)" type="text"
+                    tabindex="9" maxlength="3" title="لطفا اعداد بین  0 تا 255 را وارد نمایید" required="required"
+                    required>
+                  <br>
+                  <br>
+                  <label for="Dns">Dns: </label>
+                  <input name="DNS_Oct_4" id="DNS_Oct_4" class="sizeinput" onkeypress="return isNumber(event)"
+                    type="text" maxlength="3" tabindex="16" title="لطفا اعداد بین  0 تا 255 را وارد نمایید"
+                    required="required" required>
+                  <input name="DNS_Oct_3" id="DNS_Oct_3" class="sizeinput" onkeypress="return isNumber(event)"
+                    type="text" maxlength="3" tabindex="15" title="لطفا اعداد بین  0 تا 255 را وارد نمایید"
+                    required="required" required>
+                  <input name="DNS_Oct_2" id="DNS_Oct_2" class="sizeinput" onkeypress="return isNumber(event)"
+                    type="text" maxlength="3" tabindex="14" title="لطفا اعداد بین  0 تا 255 را وارد نمایید"
+                    required="required" required>
+                  <input name="DNS_Oct_1" id="DNS_Oct_1" class="sizeinput" onkeypress="return isNumber(event)"
+                    type="text" maxlength="3" tabindex="13" title="لطفا اعداد بین  0 تا 255 را وارد نمایید"
+                    required="required" required>
+                </fieldset>
+              </fieldset>
+              <label class="notification">لطفا اعداد بین 0 تا 255 را وارد نمایید *</label>
+              <br><br><br>
+              <input class="userbutton" type="submit" value="Submit" size=3>
+            </form>
+          </div>
+        </div>
+        <div id="Connection" class="tabcontent">
+          <div class="title">Connection</div>
+          <div class="line"></div>
+          <div class="form">
+            <form class="formConnection" action="">
+              <div class="radio-box-Connection Ethernet" onclick="radioEthernet()">
+                <input type="radio" id="Ethernet" name="Ethernet" value="Ethernet" checked>
+                <label for="Ethernet">&nbsp;Ethernet</label>
+              </div>
+              <br>
+              <br>
+              <fieldset class="fieldset">
+                <legend>
+                  <div onclick="radiowifi()">
+                    <input class="radio-box-Connection" type="radio" id="Wifi" name="Ethernet" value="Wifi">
+                    <label for="Wifi">&nbsp;Wifi</label>
+                  </div>
+                </legend>
+                <fieldset class="fieldset-content off" id="fieldset-Connection" disabled>
+                  <br>
+                  <br>
+                  <div class="ssid">
+                    <label>SSID:</label>
+                    <div class="select">
+                      <select name="" id="">
+                        <option class="option" value="ADSL-hiweb">ADSL-hiweb</option>
+                        <option class="option" value="ADSL-ParsOnline">ADSL-ParsOnline</option>
+                      </select>
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                  <label for="">Password: </label>
+                  <input class="Connectioninput conection-password" id="" type="password" size=3 required>
+                </fieldset>
+              </fieldset>
+              <br><br><br>
+              <button class="userbutton" id="Password" type="submit" size=3>Submit</button>
+            </form>
+          </div>
+        </div>
+        <div id="Server" class="tabcontent">
+          <div class="title">Server</div>
+          <div class="line"></div>
+          <div class="form">
+            <form class="formConnection" action="/Server_Setting">
+              <fieldset class="fieldset">
+                <div style="display: flex;justify-content: space-between;align-content: center;text-align: center;">
+                  <label for="format">Server Vendore:</label>
+                  <div class="select">
+                    <select name="Server_Vendor" id="Server_Vendor">
+                      <option class="option" value="Mikrotik">Mikrotik Userman</option>
+                      <option class="option" value="Aticonnect">Ati Connect</option>
+                    </select>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <label for="server ip">Server Address: </label>
+                <input name="Server_IP" id="Server_IP" class="Connectioninput serverinput" type="text" tabindex="4"
+                  size=3 required>
+                <br>
+                <br>
+                <br>
+                <label for="ip">Username:</label>
+                <input name="Server_User" id="Server_User" class="Connectioninput serverinput" id="username" type="text"
+                  size=3 required>
+                <br>
+                <br>
+                <br>
+                <label for="Password">Password: </label>
+                <input name="Server_Pass" id="Server_Pass" class="Connectioninput serverinput" type="password" size=3
+                  required>
+                <br>
+                <br>
+                <br>
+                <br><br><br>
+                <button class="userbutton" id="Password" type="submit" size=3>Submit</button>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+        <div id="User" class="tabcontent">
+          <div class="title">User</div>
+          <div class="line"></div>
+          <div class="form">
+            <form class="formConnection" id="formConnectionId" action="/User_Setting">
+              <fieldset class="fieldset">
+                <label for="SSID">Username:</label>
+                <br>
+                <input class="Connectioninput Username" id="Username" name="Username" type="text" size=3>
+                <br>
+                <br>
+                <br>
+                <label for="SSID">Password:</label>
+                <br>
+                <input class="Connectioninput Password" id="Password" name="Password" type="password" size=3 required>
+                <br>
+                <br>
+                <br>
+                <label for="Password">Confirm Password: </label>
+                <br>
+                <input class="Connectioninput ConfirmPassword" type="password" size=3 required>
+                <br><br><br><br>
+                <br>
+                <input class="userbutton" id="Password" type="submit" value="Submit" size=3>
+              </fieldset>
+              <label dir="rtl" class="notificationUser1">لطفا Username و Password را وارد نمایید *</label>
+              <label dir="rtl" class="notificationUser2">کادر Password و Confirm Password برابر نیستند *</label>
+            </form>
+          </div>
+        </div>
+        <div id="Maintenance" class="tabcontent">
+          <div class="title">Maintenance</div>
+          <div class="line"></div>
+          <div class="form">
+            <form action="/Maintenance">
+              <fieldset class="fieldset Maintenance-fieldset">
+                <legend>
+                  <label>Firmware</label>
+                </legend>
+                <label for="factory">Firmware Version: </label>
+                <label class="box-Firmware" id="Version">1.2.54</label>
+                <inptu type="button" class="Maintenance-btn" onclick="window.location.href='/Firmware';">Firmware
+                  update</button>
+              </fieldset>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <div class="Maintenance">
+                <div class="Maintenance-radio">
+                  <div>
+                    <input type="radio" class="factory" id="Restart" name="factory" value="no" checked="checked">
+                    <label for="Restart">Restart</label>
+                  </div>
+                  <div>
+                    <input type="radio" class="factory" id="Reset" name="factory" value="yes">
+                    <label for="Reset">Reset Factory</label>
+                  </div>
+                </div>
+                <input type="submit" value="Restart" class="Maintenance-btn">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="description">
+        <div class="ver">
+          <label class="ver">Version:&nbsp;</label>
+          <label class="ver" id="Version2"> 222</label>
+        </div>
+        <div class="powered"> Powered By Apadana Company</div>
+      </div>
+    </footer>
+  </section>
+  <script type="text/javascript">
+
+    let formNetwork = document.getElementById('formNetworkId')
+    let inpute = document.querySelectorAll('.sizeinput')
+    formNetwork.addEventListener('submit', function (event) {
+      inpute.forEach(function (taginpute) {
+        if (taginpute.value > 255) {
+          event.preventDefault();
+          console.log('عدد وارد شده نباید بیشتر از 255 باشد');
+          document.querySelector('.notification').style.display = 'inline';
+          setTimeout(function () {
+            document.querySelector('.notification').style.display = 'none';
+          }, 5000)
+        } else {
+
+        }
+      });
+    })
+
+
+
+    let submitform = document.getElementById('formConnectionId')
+    let usernameInput = document.querySelector('.Username')
+    let passwordInput = document.querySelector('.Password')
+    let confirmPasswordInput = document.querySelector('.ConfirmPassword')
+    submitform.addEventListener('submit', function (event) {
+      let userNameValue = usernameInput.value.trim()
+      let passwordValue = passwordInput.value.trim()
+      let confirmPasswordValue = confirmPasswordInput.value.trim()
+      console.log(userNameValue, passwordValue, confirmPasswordValue)
+      if (userNameValue === '' || passwordValue === '') {
+        document.querySelector('.notificationUser1').style.display = 'inline';
+        setTimeout(function () {
+          document.querySelector('.notificationUser1').style.display = 'none';
+        }, 5000)
+
+        event.preventDefault()
+      } else if (passwordValue !== confirmPasswordValue) {
+        document.querySelector('.notificationUser2').style.display = 'inline';
+        setTimeout(function () {
+          document.querySelector('.notificationUser2').style.display = 'none';
+        }, 5000)
+        event.preventDefault()
+      } else {
+        alert('password ok')
+      }
+    })
+
+
+
+
+
+
+    let dhcp = document.getElementById('DHCP');
+    let static = document.getElementById('Static');
+    let Network = document.getElementById('fieldset-Network');
+    function dhcpcheckstatus() {
+      let dhcpcheck = dhcp.setAttribute('checked', true);
+      static.removeAttribute('checked');
+      if (dhcp.hasAttribute('checked', true)) {
+        Network.classList.add('off');
+        Network.disabled = true;
+      }
+    }
+    function staticcheckstatus() {
+      let staticcheck = static.setAttribute('checked', true);
+      dhcp.removeAttribute('checked');
+      if (static.hasAttribute('checked', true)) {
+        Network.classList.remove('off');
+        Network.disabled = false;
+      }
+    }
+
+
+
+
+
+
+    let ethernet = document.getElementById('Ethernet');
+    let wifi = document.getElementById('Wifi');
+    let Connection = document.getElementById('fieldset-Connection');
+    function radioEthernet() {
+      ethernet.setAttribute('checked', true);
+      wifi.removeAttribute('checked');
+      if (ethernet.hasAttribute('checked', true)) {
+        Connection.classList.add('off');
+        Connection.disabled = true;
+        console.log('ethernet enable')
+      }
+    }
+    function radiowifi() {
+      wifi.setAttribute('checked', true);
+      ethernet.removeAttribute('checked');
+      if (wifi.hasAttribute('checked', true)) {
+        Connection.classList.remove('off');
+        Connection.disabled = false;
+        console.log('wifi enable')
+      }
+    }
+
+
+
+
+
+
+    function isNumber(evt) {
+      evt = (evt) ? evt : window.event;
+      var charCode = (evt.which) ? evt.which : evt.keyCode;
+      if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+      }
+      return true;
+    }
+    function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+    document.getElementById("defaultOpen").click();
+
+
+
+
+    // var reqstatus = new XMLHttpRequest();
+    // var path;
+    // function processStatus() {
+    //   reqstatus.open("GET", "/Status", true);
+    //   reqstatus.onreadystatechange = responseStatus;
+    //   reqstatus.send();
+    //   setTimeout(processStatus, 1000);
+    // }
+    // function responseStatus() {
+    //   if (this.readyState == 4 && this.status == 200) {
+    //     myObj = JSON.parse(this.responseText);
+    //     document.getElementById("S_ipaddress").innerHTML = myObj.S_ipaddress;
+    //     document.getElementById("S_subnetmask").innerHTML = myObj.S_subnetmask;;
+    //     document.getElementById("S_defaultgateway").innerHTML = myObj.S_defaultgateway;
+    //     document.getElementById("S_dns").innerHTML = myObj.S_dns;
+    //     document.getElementById("S_connectiontype").innerHTML = myObj.S_connectiontype;
+    //     document.getElementById("S_ssid").innerHTML = myObj.S_ssid;
+    //     document.getElementById("S_psk").innerHTML = myObj.S_psk;
+    //     document.getElementById("S_servervendor").innerHTML = myObj.S_servervendor;
+    //     document.getElementById("S_serveraddress").innerHTML = myObj.S_serveraddress;
+    //     document.getElementById("S_serveruser").innerHTML = myObj.S_serveruser;
+    //     document.getElementById("S_serverpass").innerHTML = myObj.S_serverpass;
+    //     document.getElementById("S_username").innerHTML = myObj.S_username;
+    //     document.getElementById("S_password").innerHTML = myObj.S_password;
+    //     document.getElementById("Version").innerHTML = myObj.Version;
+    //     document.getElementById("Version2").innerHTML = myObj.Version;
+    //   }
+    // }
+    // window.onload = processStatus;
+
+
+
+
+  </script>
+</body>
+
+</html>
